@@ -4,7 +4,7 @@ This is a solution to the [Interactive rating component challenge on Frontend Me
 
 ## Links
 
-> Solution URL: [GitHub](https://github.com/HioFabien/qr-code-card-design)  
+> Solution URL: [GitHub](https://github.com/HioFabien/interactive-rating-component-main)  
 > Live Site URL: [GitHub](https://hiofabien.github.io/qr-code-card-design)
 
 ## Built with
