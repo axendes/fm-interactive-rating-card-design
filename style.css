@@ -51,7 +51,7 @@ body {
     transition: opacity 200ms;
 }
 
-@media screen (max-width: 600px) {
+@media screen and (max-width: 600px) {
     .card,
     .other-side {
         width: 400px;
