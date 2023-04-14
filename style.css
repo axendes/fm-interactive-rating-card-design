@@ -10,6 +10,8 @@
     --dark-blue: hsl(213, 19%, 18%);
     --very-dark-blue: hsl(216, 12%, 8%);
     --bottom-clr: hsl(215, 27%, 12%);
+
+    --white-opacity: hsla(0, 0%, 100%, 0.1);
 }
 
 /* -------------------------------------------------------------------Defaults */
@@ -23,208 +25,224 @@
     font-family: Overpass, sans-serif;
 }
 
-body {
-    position: relative;
-    display: grid;
-    place-content: center;
-    gap: 50px;
+.body {
     min-height: 100vh;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+
     background-color: var(--very-dark-blue);
 }
 
-/* -------------------------------------------------------------------Primary Blocks */
+/* -------------------------------------------------------------------Main Containers */
 
-.card,
-.other-side {
+.wrapper {
     width: 500px;
-    aspect-ratio: 1;
-    border-radius: 2em;
+    user-select: none;
+}
+
+.wrapper__inner {
+    border-radius: 2.2em;
+    height: 500px;
+    padding: 2.4rem;
+
+    background-image: radial-gradient(circle at 50% 0, hsla(205, 100%, 87%, 0.1), var(--bottom-clr));
+}
+
+.wrapper__inner_face {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 2.5em;
-    user-select: none;
-
-    background: radial-gradient(at 50% 0, var(--dark-blue), var(--bottom-clr));
-
-    transition: opacity 200ms;
 }
 
-@media screen and (max-width: 600px) {
-    .card,
-    .other-side {
-        width: 400px;
-        gap: 20px;
-    }
+.wrapper__inner_back {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3.3rem 2.2rem;
 }
 
-/* -------------------------------------------------------------------Main Card's Elements Styling */
+/* -------------------------------------------------------------------Face Container Items */
 
-.icon-container {
-    width: 50px;
-    height: 50px;
+.face__icon {
     display: grid;
     place-content: center;
-    padding: 1.3em;
+    height: 57px;
+    width: 57px;
     border-radius: 50%;
+    pointer-events: none;
 
     background-color: var(--dark-blue);
 }
 
-.icon-container img {
-    width: 18px;
-    height: 18px;
-    object-fit: contain;
-    object-position: center;
-}
-
-.text-container {
+.face__desc {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    text-align: center;
+    gap: 10px;
 }
 
-.header {
+.face__desc_header {
+    font-size: 2.1rem;
+
     color: var(--white);
 }
 
-.desc {
-    line-height: 1.5;
-    font-size: 18px;
+.face__desc_text {
+    font-size: 1.1rem;
+    line-height: 1.8rem;
+    letter-spacing: .3px;
 
     color: var(--light-grey);
 }
 
-/* -------------------------------------------------------------------Form Styling */
-
-.rating-form {
+.face__form {
     display: flex;
     flex-direction: column;
-    gap: 35px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
 }
 
-.inputs {
+.face__vote-row {
+    width: 100%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
-.radio-block {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    overflow: hidden;
-
-    background-color: var(--dark-blue);
-}
-
-.radio-block * {
-    position: absolute;
-    user-select: none;
-}
-
-.radio-block input {
+.face__radio {
     appearance: none;
-    border: none;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    border-radius: inherit;
-
+    width: 63px;
+    height: 63px;
+    border-radius: 50%;
     background-color: var(--dark-blue);
-
-    transition: background-color 200ms;
-}
-
-.radio-block input:active {
-    outline: none;
-}
-
-.radio-block:hover input {
-    background-color: var(--orange);
-}
-
-.radio-block label {
-    pointer-events: none;
-    z-index: 2;
-    font-size: 18px;
-    top: 33%;
-
-    color: var(--light-grey);
-
-    transition: color 200ms;
-}
-
-.radio-block:hover label {
-    color: var(--white);
-}
-
-.radio-block input:checked {
-    background-color: var(--light-grey);
-}
-
-.radio-block:has(input:checked) label {
-    color: var(--white);
-}
-
-/* -------------------------------------------------------------------Submit Button */
-
-.submit-btn {
-    width: 100%;
-    border: none;
-    border-radius: 2em;
-    text-transform: uppercase;
-    font-size: 18px;
-    letter-spacing: 2px;
-    padding: .9em 0 .7em;
+    position: relative;
     cursor: pointer;
-
-    background-color: var(--orange);
-    color: var(--white);
 
     transition: background-color 200ms, color 200ms;
 }
 
-.submit-btn:hover {
-    background-color: var(--white);
-    color: var(--orange);
+.face__radio:hover {
+    background-color: var(--orange);
 }
 
-/* -------------------------------------------------------------------After Submit Block */
-
-.other-side {
-    display: none;
-    align-items: center;
-    padding: 3em;
+.face__radio:checked {
+    background-color: var(--medium-grey);
 }
 
-.user-selected {
-    width: fit-content;
-    padding: 7px 20px 5px;
-    text-align: center;
-    border-radius: inherit;
-    letter-spacing: 1px;
+.face__radio::before {
+    content: "1";
+    position: absolute;
+    inset: 50% auto auto 50%;
+    transform: translate(-50%, -45%);
+    font-size: 1.2rem;
+    pointer-events: none;
     
+    color: var(--light-grey);
+    
+    transition: color 200ms;
+}
+
+.face__radio:nth-of-type(2)::before { content: "2"; }
+.face__radio:nth-of-type(3)::before { content: "3"; }
+.face__radio:nth-of-type(4)::before { content: "4"; }
+.face__radio:nth-of-type(5)::before { content: "5"; }
+
+.face__radio:checked::before,
+.face__radio:hover::before {
+    color: var(--white);
+}
+
+.face__label {
+    display: none;
+}
+
+.face__submit {
+    all: unset;
+    width: 100%;
+    display: grid;
+    place-content: center;
+    padding: 1.1rem 0 .9rem;
+    border-radius: 10rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 400;
+    font-size: 1.1rem;
+
+    color: var(--white);
+    background-color: var(--orange);
+
+    transition: color 200ms, background-color 200ms;
+}
+
+.face__submit:hover {
+    color: var(--orange);
+    background-color: var(--white);
+}
+
+/* -------------------------------------------------------------------Back Container Items */
+
+.back__icon {
+    pointer-events: none;
+}
+
+.back__user-selected {
+    padding: .5rem 1.5rem;
+    font-size: 1.2rem;
+    border-radius: 10rem;
+
     background-color: var(--dark-blue);
     color: var(--orange);
 }
 
-.image-block {
-    display: grid;
-    place-content: center;
+.back__appreciate {
+    font-size: 2.1rem;
+
+    color: var(--white);
 }
 
-.image-block img {
-    width: 200px;
-    object-fit: containt;
+.back__desc {
+    font-size: 1.2rem;
+    text-align: center;
+    line-height: 1.9rem;
+    margin-top: -20px;
+
+    color: var(--light-grey);
 }
 
-/* -------------------------------------------------------------------Description Links */
+/* -------------------------------------------------------------------Media */
+
+@media screen and (max-width: 600px) {
+    .wrapper {
+        width: min(500px, 90%);
+    }
+
+    .wrapper__inner {
+        border-radius: 1.5rem;
+    }
+
+    .face__radio {
+        width: 55px;
+        height: 55px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .face__radio {
+        width: 40px;
+        height: 40px;
+    }
+
+    .wrapper__inner {
+        height: fit-content;
+    }
+}
+
+/* -------------------------------------------------------------------Author */
 
 .attribution {
     font-size: 11px;
@@ -232,11 +250,11 @@ body {
     color: gray;
 }
 
-.attribution a {
-    color: gray;
+.attribution__link {
     transition: color 100ms;
+    color: gray;
 }
 
-.attribution a:hover {
+.attribution__link:hover {
     color: var(--white);
 }

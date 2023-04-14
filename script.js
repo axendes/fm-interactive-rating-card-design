@@ -1,19 +1,17 @@
 "use strict";
 
-const form = document.querySelector(".rating-form");
-form.addEventListener("submit", showResults);
+const submitBtn = document.querySelector(".face__submit");
+const resultsPar = document.querySelector(".back__user-selected");
+const faceCont = document.querySelector(".wrapper__inner_face");
+const backCont = document.querySelector(".wrapper__inner_back");
 
-function showResults(e) {
-    e.preventDefault();
+submitBtn.onclick = showResults;
 
-    const checked = document.querySelector("input[name=rating]:checked");
-    const parent = checked.parentElement;
-    const value = parent.getElementsByTagName("label")[0].innerHTML;
-    const toreplace = document.querySelector(".user-selected");
-    const form = document.querySelector(".card");
-    const resultBlock = document.querySelector(".other-side");
-
-    toreplace.innerHTML = `You selected ${value} out of 5`;
-    resultBlock.style.display = "flex";
-    form.style.display = "none";
+function showResults() {
+    const checkedRadio = document.querySelector("input[name=face__radio]:checked");
+    if (!!checkedRadio) {
+        resultsPar.innerHTML = `You selected ${checkedRadio.id.slice(-1)} out of 5`;
+        faceCont.style.display = "none";
+        backCont.style.display = "flex";
+    }
 }
