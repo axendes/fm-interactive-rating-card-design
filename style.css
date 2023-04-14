@@ -48,7 +48,7 @@
     height: 500px;
     padding: 2.4rem;
 
-    background-image: radial-gradient(circle at 50% 0, hsla(205, 100%, 87%, 0.1), var(--bottom-clr));
+    background-image: radial-gradient(circle at 50% 0, var(--dark-blue), var(--bottom-clr));
 }
 
 .wrapper__inner_face {
