@@ -11,7 +11,7 @@
     --very-dark-blue: hsl(216, 12%, 8%);
     --bottom-clr: hsl(215, 27%, 12%);
 
-    --white-opacity: hsla(0, 0%, 100%, 0.1);
+    --attr-clr: hsl(0, 0%, 50%);
 }
 
 /* -------------------------------------------------------------------Defaults */
@@ -62,7 +62,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 3.3rem 2.2rem;
+    padding: 3.2rem 2.2rem;
 }
 
 /* -------------------------------------------------------------------Face Container Items */
@@ -106,7 +106,7 @@
     gap: 40px;
 }
 
-.face__vote-row {
+.face__row {
     width: 100%;
     display: flex;
     align-items: center;
@@ -191,9 +191,10 @@
 }
 
 .back__user-selected {
-    padding: .5rem 1.5rem;
-    font-size: 1.2rem;
+    padding: .6rem 1.3rem .43rem;
+    font-size: 1rem;
     border-radius: 10rem;
+    letter-spacing: 1.1px;
 
     background-color: var(--dark-blue);
     color: var(--orange);
@@ -240,6 +241,19 @@
     .wrapper__inner {
         height: fit-content;
     }
+
+    .wrapper__inner_back {
+        gap: 30px;
+    }
+
+    .back__appreciate {
+        font-size: 1.5rem;
+    }
+
+    .back__desc {
+        font-size: .9rem;
+        line-height: initial;
+    }
 }
 
 /* -------------------------------------------------------------------Author */
@@ -247,12 +261,14 @@
 .attribution {
     font-size: 11px;
     text-align: center;
-    color: gray;
+
+    color: var(--attr-clr);
 }
 
 .attribution__link {
     transition: color 100ms;
-    color: gray;
+
+    color: var(--attr-clr);
 }
 
 .attribution__link:hover {
