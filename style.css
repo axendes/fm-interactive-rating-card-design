@@ -11,7 +11,7 @@
     --very-dark-blue: hsl(216, 12%, 8%);
     --bottom-clr: hsl(215, 27%, 12%);
 
-    --attr-clr: hsl(0, 0%, 50%);
+    --attr-clr: hsl(0, 0%, 80%);
 }
 
 /* -------------------------------------------------------------------Defaults */
@@ -169,8 +169,8 @@
     border-radius: 10rem;
     cursor: pointer;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    font-weight: 400;
+    letter-spacing: 2px;
+    font-weight: 700;
     font-size: 1.1rem;
 
     color: var(--white);
@@ -221,29 +221,49 @@
     .wrapper {
         width: min(500px, 90%);
     }
+}
+
+@media screen and (max-width: 500px) {
+    .face__radio {
+        width: 60px;
+        height: 60px;
+    }
+
+    .face__icon {
+        height: 45px;
+        width: 45px;
+    }
+
+    .face__icon_inner {
+        width: 15px;
+        height: 15px;
+    }
 
     .wrapper__inner {
         border-radius: 1.5rem;
-    }
-
-    .face__radio {
-        width: 55px;
-        height: 55px;
-    }
-}
-
-@media screen and (max-width: 400px) {
-    .face__radio {
-        width: 40px;
-        height: 40px;
-    }
-
-    .wrapper__inner {
         height: fit-content;
     }
 
     .wrapper__inner_back {
         gap: 30px;
+    }
+
+    .face__desc {
+        margin-top: 1.5rem;
+    }
+
+    .face__desc_header {
+        font-size: 1.625rem;
+    }
+
+    .face__desc_text {
+        font-size: .875rem;
+        line-height: 1.5;
+        letter-spacing: .3px;
+    }
+
+    .face__form {
+        margin-top: 2rem;
     }
 
     .back__appreciate {
@@ -254,13 +274,35 @@
         font-size: .9rem;
         line-height: initial;
     }
+
+    .attribution {
+        font-size: .6rem !important; 
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .face__radio {
+        width: 50px;
+        height: 50px;
+    }
+
+    .wrapper__inner {
+        padding: 1.5rem 1.5rem 2rem;
+    }
+
+    .face__form {
+        gap: 30px;
+    }
 }
 
 /* -------------------------------------------------------------------Author */
 
 .attribution {
-    font-size: 11px;
+    position: absolute;
+    inset: auto 0 1rem 0;
+    font-size: 1rem;
     text-align: center;
+    font-weight: 700;
 
     color: var(--attr-clr);
 }
@@ -272,5 +314,5 @@
 }
 
 .attribution__link:hover {
-    color: var(--white);
+    color: var(--orange);
 }
