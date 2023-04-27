@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
 
-/* -------------------------------------------------------------------Variables */
-
 :root {
     --orange: hsl(25, 97%, 53%);
     --white: hsl(0, 0%, 100%);
@@ -14,7 +12,7 @@
     --attr-clr: hsl(0, 0%, 80%);
 }
 
-/* -------------------------------------------------------------------Defaults */
+/* -------------------------------------------------------------------Default */
 
 *,
 *::before,
@@ -22,301 +20,318 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Overpass, sans-serif;
+    font-family: "Overpass", sans-serif;
 }
 
 .body {
+    position: relative;
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
 
     background-color: var(--very-dark-blue);
+
+    user-select: none;
 }
 
 /* -------------------------------------------------------------------Main Containers */
 
-.wrapper {
-    width: 500px;
-    user-select: none;
-}
-
-.wrapper__inner {
-    border-radius: 2.2em;
-    height: 500px;
-    padding: 2.4rem;
+.main {
+    width: 412px;
+    height: 415px;
+    margin: 3rem 1.5rem 8rem;
 
     background-image: radial-gradient(circle at 50% 0, var(--dark-blue), var(--bottom-clr));
+    border-radius: 2rem;
 }
 
-.wrapper__inner_face {
+.wrapper {
+    gap: 2rem;
+    flex-direction: column;
+    max-height: 100%;
+}
+
+.wrapper-face {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    padding: 2rem;
 }
 
-.wrapper__inner_back {
+.wrapper-face--deactivated {
+    pointer-events: none;
+    animation: hideFace 500ms;
+}
+
+@keyframes hideFace {
+    100% {
+        opacity: 0;
+    }
+}
+
+.wrapper-back {
     display: none;
-    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 3.2rem 2.2rem;
+    padding: 2.75rem 2.5rem;
+
+    opacity: 0;
 }
 
-/* -------------------------------------------------------------------Face Container Items */
+.wrapper-back--activated {
+    animation: showBack 500ms forwards;
+}
 
-.face__icon {
+@keyframes showBack {
+    100% {
+        opacity: 1;
+    }
+}
+
+/* -------------------------------------------------------------------Face Card */
+
+.wrapper-face__img-wrapper {
     display: grid;
     place-content: center;
-    height: 57px;
-    width: 57px;
+    height: 49px;
+    width: 49px;
+    
     border-radius: 50%;
-    pointer-events: none;
-
     background-color: var(--dark-blue);
+
+    pointer-events: none;
 }
 
-.face__desc {
+.wrapper-face__desc {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-block-end: -.35rem;
 }
 
-.face__desc_header {
-    font-size: 2.1rem;
+.wrapper-face__desc-header {
+    font-size: 1.725rem;
 
     color: var(--white);
 }
 
-.face__desc_text {
-    font-size: 1.1rem;
-    line-height: 1.8rem;
-    letter-spacing: .3px;
+.wrapper-face__desc-text {
+    font-size: .940rem;
+    line-height: 1.5rem;
 
     color: var(--light-grey);
 }
 
-.face__form {
+.wrapper-face__form {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    gap: 40px;
+    gap: 2rem;
 }
 
-.face__row {
+.wrapper-face__form-row {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.face__radio {
-    appearance: none;
-    width: 63px;
-    height: 63px;
+.wrapper-face__form-label {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    padding-top: 3px;
+    width: 50px;
+    aspect-ratio: 1;
+    
     border-radius: 50%;
     background-color: var(--dark-blue);
-    position: relative;
-    cursor: pointer;
+    color: var(--medium-grey);
 
+    cursor: pointer;
     transition: background-color 200ms, color 200ms;
 }
 
-.face__radio:hover {
+.wrapper-face__form-input {
+    appearance: none;
+}
+
+.wrapper-face__form-label:hover {
     background-color: var(--orange);
-}
-
-.face__radio:checked {
-    background-color: var(--medium-grey);
-}
-
-.face__radio::before {
-    content: "1";
-    position: absolute;
-    inset: 50% auto auto 50%;
-    transform: translate(-50%, -45%);
-    font-size: 1.2rem;
-    pointer-events: none;
-    
-    color: var(--light-grey);
-    
-    transition: color 200ms;
-}
-
-.face__radio:nth-of-type(2)::before { content: "2"; }
-.face__radio:nth-of-type(3)::before { content: "3"; }
-.face__radio:nth-of-type(4)::before { content: "4"; }
-.face__radio:nth-of-type(5)::before { content: "5"; }
-
-.face__radio:checked::before,
-.face__radio:hover::before {
     color: var(--white);
 }
 
-.face__label {
-    display: none;
+.wrapper-face__form-label:has(.wrapper-face__form-input:checked) {
+    background-color: var(--medium-grey);
+    color: var(--white);
 }
 
-.face__submit {
-    all: unset;
+/* -------------------------------------------------------------------Submit Button */
+
+.wrapper-face__form-submit {
+    border: none;
     width: 100%;
-    display: grid;
-    place-content: center;
-    padding: 1.1rem 0 .9rem;
-    border-radius: 10rem;
-    cursor: pointer;
+    padding: .9rem 0 .65rem;
+
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-weight: 700;
-    font-size: 1.1rem;
-
+    font-size: .95rem;
+    
+    border-radius: 10rem;
     color: var(--white);
     background-color: var(--orange);
-
+    
+    cursor: pointer;
     transition: color 200ms, background-color 200ms;
 }
 
-.face__submit:hover {
+.wrapper-face__form-submit:disabled {
+    background-color: var(--dark-blue);
+    color: var(--light-grey);
+
+    cursor: default;
+    pointer-events: none;
+}
+
+.wrapper-face__form-submit:not(:disabled):hover {
     color: var(--orange);
     background-color: var(--white);
 }
 
-/* -------------------------------------------------------------------Back Container Items */
+/* -------------------------------------------------------------------Back Card */
 
-.back__icon {
+.wrapper-back__img-wrapper {
     pointer-events: none;
 }
 
-.back__user-selected {
+.wrapper-back__selected {
     padding: .6rem 1.3rem .43rem;
-    font-size: 1rem;
-    border-radius: 10rem;
-    letter-spacing: 1.1px;
 
+    font-size: .9rem;
+    letter-spacing: .5px;
+    
+    border-radius: 10rem;
     background-color: var(--dark-blue);
     color: var(--orange);
 }
 
-.back__appreciate {
-    font-size: 2.1rem;
+.wrapper-back__header {
+    margin-block-end: -1.25rem;
+    font-size: 1.7rem;
 
     color: var(--white);
 }
 
-.back__desc {
-    font-size: 1.2rem;
+.wrapper-back__desc {
+    font-size: .925rem;
     text-align: center;
-    line-height: 1.9rem;
-    margin-top: -20px;
+    line-height: 1.5rem;
 
     color: var(--light-grey);
 }
 
-/* -------------------------------------------------------------------Media */
-
-@media screen and (max-width: 600px) {
-    .wrapper {
-        width: min(500px, 90%);
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .face__radio {
-        width: 60px;
-        height: 60px;
-    }
-
-    .face__icon {
-        height: 45px;
-        width: 45px;
-    }
-
-    .face__icon_inner {
-        width: 15px;
-        height: 15px;
-    }
-
-    .wrapper__inner {
-        border-radius: 1.5rem;
-        height: fit-content;
-    }
-
-    .wrapper__inner_back {
-        gap: 30px;
-    }
-
-    .face__desc {
-        margin-top: 1.5rem;
-    }
-
-    .face__desc_header {
-        font-size: 1.625rem;
-    }
-
-    .face__desc_text {
-        font-size: .875rem;
-        line-height: 1.5;
-        letter-spacing: .3px;
-    }
-
-    .face__form {
-        margin-top: 2rem;
-    }
-
-    .back__appreciate {
-        font-size: 1.5rem;
-    }
-
-    .back__desc {
-        font-size: .9rem;
-        line-height: initial;
-    }
-
-    .attribution {
-        font-size: .6rem !important; 
-    }
-}
-
-@media screen and (max-width: 450px) {
-    .face__radio {
-        width: 50px;
-        height: 50px;
-    }
-
-    .wrapper__inner {
-        padding: 1.5rem 1.5rem 2rem;
-    }
-
-    .face__form {
-        gap: 30px;
-    }
-}
-
-/* -------------------------------------------------------------------Author */
+/* -------------------------------------------------------------------Footer */
 
 .attribution {
     position: absolute;
-    inset: auto 0 1rem 0;
+    inset: auto 0 0 0;
+    padding: 1em;
+    
     font-size: 1rem;
     text-align: center;
     font-weight: 400;
-
+    
     color: var(--white);
-
+    background-color: var(--dark-blue);
+    
     cursor: default;
 }
 
 .attribution__link {
-    text-decoration: none;
     font-weight: 700;
-    transition: color 200ms;
-
+    text-decoration: none;
+    
     color: var(--white);
+    
+    transition: color 100ms;
 }
 
 .attribution__link:hover {
     color: var(--orange);
+}
+
+/* -------------------------------------------------------------------Media Queries */
+
+@media screen and (max-width: 500px) {
+    .attribution {
+        display: flex;
+        flex-direction: column;
+        gap: .25rem;
+
+        font-size: .9rem;      
+    }
+
+    .main {
+        border-radius: 1rem;
+        height: 355px;
+    }
+
+    .wrapper-face {
+        padding: 1.5rem 1.5rem 1rem;
+        gap: 1rem;
+    }
+
+    .wrapper-face__img-wrapper {
+        width: 40px;
+        height: 40px;
+    }
+
+    .wrapper-face__img {
+        width: 14px;
+        height: 14px;
+    }
+
+    .wrapper-face__desc-header {
+        font-size: 1.5rem;
+    }
+
+    .wrapper-face__desc-text {
+        font-size: .85rem;
+        line-height: 1.6;
+        margin-block-end: 1rem;
+    }
+
+    .wrapper-face__form {
+        gap: 1.5rem;
+    }
+
+    .wrapper-face__form-label {
+        width: 45px;
+    }
+
+    .wrapper-face__form-submit {
+        font-size: .85rem;
+    }
+
+    .wrapper-back {
+        padding: 2rem 1.35rem 2rem;
+        gap: 1.25rem;
+    }
+
+    .wrapper-back__img {
+        width: 150px;
+    }
+
+    .wrapper-back__selected {
+        padding: .5rem .75rem .4rem;
+    }
+
+    .wrapper-back__header {
+        font-size: 1.5rem;
+        margin-block: .4rem -.5rem;
+    }
+
+    .wrapper-back__desc {
+        font-size: .875rem;
+        line-height: 1.5;
+    }
 }

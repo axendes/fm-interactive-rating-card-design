@@ -9,54 +9,54 @@
   <title>Frontend Mentor | Interactive rating component</title>
 </head>
 <body class="body">
-  <main class="wrapper">
-    <section class="wrapper__inner wrapper__inner_face">
-      <div class="face__icon">
-        <img class="face__icon_inner" src="images/icon-star.svg" alt="star" width="20" height="20">
+  <main class="main">
+    <section class="wrapper wrapper-face">
+      <div class="wrapper-face__img-wrapper">
+        <img class="wrapper-face__img" src="images/icon-star.svg" alt="Star Icon" width="17" height="17">
       </div>
 
-      <div class="face__desc">
-        <h1 class="face__desc_header">How did we do?</h1>
-
-        <p class="face__desc_text">
+      <div class="wrapper-face__desc">
+        <h1 class="wrapper-face__desc-header">How did we do?</h1>
+        <p class="wrapper-face__desc-text">
           Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!
         </p>
       </div>
 
-      <form action="" class="face__form">
-        <div class="face__row">
-          <label class="face__label" for="radio_1">1</label>
-          <input type="radio" id="radio_1" name="face__radio" class="face__radio">
+      <form action class="wrapper-face__form">
+        <div class="wrapper-face__form-row">
+          <label class="wrapper-face__form-label">1
+            <input type="radio" name="wrapper-face__form-input" class="wrapper-face__form-input">
+          </label>
 
-          <label class="face__label" for="radio_2">2</label>
-          <input type="radio" id="radio_2" name="face__radio" class="face__radio">
+          <label class="wrapper-face__form-label">2
+            <input type="radio" name="wrapper-face__form-input" class="wrapper-face__form-input">
+          </label>
 
-          <label class="face__label" for="radio_3">3</label>
-          <input type="radio" id="radio_3" name="face__radio" class="face__radio">
+          <label class="wrapper-face__form-label">3
+            <input type="radio" name="wrapper-face__form-input" class="wrapper-face__form-input">
+          </label>
 
-          <label class="face__label" for="radio_4">4</label>
-          <input type="radio" id="radio_4" name="face__radio" class="face__radio">
+          <label class="wrapper-face__form-label">4
+            <input type="radio" name="wrapper-face__form-input" class="wrapper-face__form-input">
+          </label>
 
-          <label class="face__label" for="radio_5">5</label>
-          <input type="radio" id="radio_5" name="face__radio" class="face__radio">
+          <label class="wrapper-face__form-label">5
+            <input type="radio" name="wrapper-face__form-input" class="wrapper-face__form-input">
+          </label>
         </div>
-
-        <button class="face__submit" type="button">Submit</button>
+        <button class="wrapper-face__form-submit" type="button" disabled>Submit</button>
       </form>
     </section>
 
-    <section class="wrapper__inner wrapper__inner_back">
-      <div class="back__icon">
-        <img src="images/illustration-thank-you.svg" alt="phone" class="back__icon_inner" width="200">
+    <section class="wrapper wrapper-back">
+      <div class="wrapper-back__img-wrapper">
+        <img src="images/illustration-thank-you.svg" alt="phone" class="wrapper-back__img" width="160">
       </div>
-
-      <p class="back__user-selected">
+      <p class="wrapper-back__selected">
         You selected * out of 5
       </p>
-
-      <h2 class="back__appreciate">Thank you!</h2>
-
-      <p class="back__desc">
+      <h2 class="wrapper-back__header">Thank you!</h2>
+      <p class="wrapper-back__desc">
         We appreciate you taking the time to give a rating. 
         If you ever need more support, don't hesitate to get in touch!
       </p>
@@ -64,8 +64,8 @@
   </main>
 
   <footer class="attribution">
-    Challenge by <a class="attribution__link" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a class="attribution__link" href="https://github.com/hiozen">Hiozen</a>.
+    <span class="attribution__wrapper">Challenge by <a class="attribution__link" href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. </span>
+    <span class="attribution__wrapper">Coded by <a class="attribution__link" href="https://github.com/hiozen">Hiozen</a>.</span>
   </footer>
 </body>
 </html>
