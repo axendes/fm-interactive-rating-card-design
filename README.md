@@ -1,4 +1,4 @@
-# Frontend Mentor - Interactive Rating Component Solution
+<h1 align="center">Frontend Mentor - Interactive Rating Component Solution</h1>
 
 This is a solution to the [Interactive rating component challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/interactive-rating-component-koxpeBUmI).
 
