@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
 
+/* -------------------------------------------------------------------Variables */
+
 :root {
     --orange: hsl(25, 97%, 53%);
     --white: hsl(0, 0%, 100%);
@@ -38,7 +40,7 @@
 .main {
     width: 412px;
     height: 415px;
-    margin: 3rem 1.5rem 8rem;
+    margin: 3rem 1.5rem 3rem;
 
     background-image: radial-gradient(circle at 50% 0, var(--dark-blue), var(--bottom-clr));
     border-radius: 2rem;
